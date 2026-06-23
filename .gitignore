@@ -1,0 +1,18 @@
+# secrets — never commit
+.env
+.env.local
+
+# repo-local scratch (cursors, session dumps, cache)
+.cache/
+
+# dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Claude Code per-machine local settings
+.claude/settings.local.json
+
+# editor / OS noise
+.DS_Store
+*.log

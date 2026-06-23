@@ -1,0 +1,11 @@
+{
+  "name": "agent-cockpit",
+  "version": "0.1.0",
+  "description": "A git-backed knowledge base your Claude Code agent maintains under a fixed protocol.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "clean": "node scripts/wiki-clean.mjs",
+    "clean:json": "node scripts/wiki-clean.mjs --json"
+  }
+}
