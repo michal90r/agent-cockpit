@@ -1,10 +1,10 @@
 # Agent Cockpit
 
-**A git-backed wiki your Claude Code agent maintains for you** — a personal knowledge base in the [Karpathy](https://x.com/karpathy) "LLM-maintained wiki" sense.
+**A git-backed wiki your Claude Code agent maintains for you** — a personal knowledge base in the sense of [Karpathy's LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 Point [Claude Code](https://claude.com/claude-code) at this repo and it reads from and writes to a compounding, cross-linked wiki under a fixed protocol — instead of giving you amnesiac one-off answers. You steer; the agent flies.
 
-This is a **starter kit**: generic scaffolding, no personal content. Clone it, point Claude Code at it, and fill it with your own knowledge.
+This is a **starter kit** — that idea shipped as a fixed, opinionated protocol (continuity as a hard gate before every reply, a sharded index that scales, one atomic write path), so your agent behaves the same from day one. Generic scaffolding, no personal content: clone it, point Claude Code at it, and fill it with your own knowledge.
 
 ## Why
 
