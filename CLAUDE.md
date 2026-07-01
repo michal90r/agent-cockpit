@@ -165,6 +165,7 @@ The agent keeps a persistent, file-based memory **outside** this repo (its locat
 - Keep source files immutable; write only to `wiki/` and `outputs/`.
 - **Scripts and scratch live in the repo, not `/tmp`.** Engine/script → `scripts/` (committed, with a row in `scripts/CLAUDE.md`); ephemeral scratch → repo-local `.cache/` (gitignored). Secrets via `${ENV}` / `.env` (gitignored), never hard-coded; paths relative to the repo, not absolute.
 - **Writes go through `wiki-write`:** never `git commit` / `git push` outside the skill.
+- **Session sync:** a `PreToolUse` hook (`.claude/settings.json`) runs `git pull --rebase --autostash` before the first action each session (once per 10 min, per session) — the checkout stays current across machines with no manual step. It uses `--autostash` so a dirty working tree does not disarm the pull, and only marks itself done on success. Portable via `${CLAUDE_PROJECT_DIR:-$PWD}` — same file works on macOS and a Linux VPS unchanged.
 - **Context hygiene:** model quality degrades in very long sessions; proactively offer `/summary` for handoff before quality drops.
 - **Date awareness:** when computing time deltas, run `date +%Y-%m-%d` first — never guess from memory.
 - **Data accuracy:** when using web URLs or source-specific facts, verify by fetching directly. If a URL cannot be fetched, state that explicitly. Do not cite unverified claims as facts.

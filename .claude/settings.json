@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sid=$(jq -r '.session_id // empty'); r=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; d=\"$r/.cache\"; marker=\"$d/wiki-pulled-$sid\"; mkdir -p \"$d\"; find \"$d\" -name 'wiki-pulled-*' -mtime +1 -delete 2>/dev/null; [ -z \"$sid\" ] || [ -n \"$(find \"$marker\" -mmin -10 2>/dev/null)\" ] || { git -C \"$r\" pull --rebase --autostash 2>&1 && touch \"$marker\"; } || true"
+          }
+        ]
+      }
+    ]
+  }
+}
